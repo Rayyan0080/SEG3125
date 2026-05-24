@@ -1,0 +1,107 @@
+/* Applying Course Principles: Visual Hierarchy, Scale, Contrast */
+
+body {
+    background-color: #000000;
+    color: #ff3333; /* A high-visibility red */
+    /* Using AmerType AM BT, falling back to courier/monospace for terminal feel */
+    font-family: 'AmerType AM BT', 'Courier New', Courier, monospace;
+    line-height: 1.6;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3 {
+    color: #ff0000;
+    text-transform: uppercase;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; border-bottom: 1px dashed #ff0000; padding-bottom: 10px; }
+h3 { font-size: 1.5rem; }
+
+/* Blinking Cursor Animation for terminal effect */
+.blink-cursor::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Navbar */
+.custom-navbar {
+    background-color: #111111;
+    border-bottom: 2px solid #ff0000;
+}
+.prompt-text {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* Sections */
+.terminal-block {
+    background-color: #0a0a0a;
+    border: 1px solid #330000;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
+}
+
+/* Lists */
+.custom-list li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    border-left: 2px solid #ff0000;
+}
+
+/* Badges */
+.custom-badge {
+    background-color: transparent;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    font-size: 1rem;
+    margin-right: 10px;
+    border-radius: 0; /* Square edges for raw tech look */
+}
+
+/* Cards (Case Studies) */
+.custom-card {
+    background-color: #050505;
+    border: 1px solid #ff0000;
+    border-radius: 0;
+    color: #ff3333;
+    transition: 0.3s;
+}
+
+.custom-card:hover {
+    background-color: #1a0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    transform: translateY(-5px); /* Interaction feedback */
+}
+
+/* Buttons */
+.custom-btn {
+    background-color: transparent;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    border-radius: 0;
+    text-transform: uppercase;
+}
+
+.custom-btn:hover {
+    background-color: #ff0000;
+    color: #000000;
+}
+
+/* Photo Placeholder */
+.photo-placeholder {
+    width: 100%;
+    height: 250px;
+    border: 2px dashed #ff0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #aa0000;
+}
