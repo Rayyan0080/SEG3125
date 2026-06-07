@@ -1,33 +1,147 @@
-/* Update your body text to be light gray for readability */
+/* Applying Course Principles: Visual Hierarchy, Scale, Contrast */
+
+/* --- Base & Typography --- */
 body {
   background-color: #000000;
-  color: #e0e0e0; /* Changed from red to light gray for better contrast */
+  color: #e0e0e0; /* Light gray for readable paragraph text */
+  /* Using AmerType AM BT, falling back to courier/monospace for terminal feel */
   font-family: "AmerType AM BT", "Courier New", Courier, monospace;
   line-height: 1.6;
 }
 
-/* Keep Headings Red to establish clear Visual Hierarchy */
 h1,
 h2,
 h3 {
-  color: #ff0000;
+  color: #ff0000; /* Keeping headings strictly red for Visual Hierarchy */
   text-transform: uppercase;
   font-weight: bold;
 }
 
-/* Make your name and prompt text stand out */
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+  border-bottom: 1px dashed #ff0000;
+  padding-bottom: 10px;
+}
+h3 {
+  font-size: 1.5rem;
+}
+
+/* --- Animations --- */
+/* Blinking Cursor Animation for terminal effect */
+.blink-cursor::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* --- Navbar --- */
+.custom-navbar {
+  background-color: #111111;
+  border-bottom: 2px solid #ff0000;
+}
+
 .prompt-text {
-  color: #00ff00; /* A terminal green for the "command line" prompt */
+  color: #00ff00; /* Terminal green for the command line prompt */
   font-weight: bold;
 }
 
-/* Update regular text inside terminal blocks */
-.terminal-block p,
-.terminal-block li {
-  color: #cccccc; /* Soft gray for easy reading */
+/* --- Sections & Layout --- */
+.terminal-block {
+  background-color: #0a0a0a;
+  border: 1px solid #330000;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
 }
 
-/* Highlight important words in your lists */
+.terminal-block p,
+.terminal-block li {
+  color: #cccccc; /* Soft gray for easy reading inside terminal blocks */
+}
+
+/* --- Lists & Badges --- */
+.custom-list li {
+  margin-bottom: 10px;
+  padding-left: 15px;
+  border-left: 2px solid #ff0000;
+}
+
 .custom-list strong {
-  color: #ff3333; /* Keeps the list titles red */
+  color: #ff3333; /* Highlights the list titles in red */
+}
+
+.custom-badge {
+  background-color: transparent;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+  font-size: 1rem;
+  margin-right: 10px;
+  border-radius: 0; /* Square edges for raw tech look */
+}
+
+/* --- Case Study Cards --- */
+.custom-card {
+  background-color: #000000 !important; /* Pure black background */
+  border: 1px solid #ff0000; /* Red border to keep the terminal shape */
+  border-radius: 0;
+  color: #ffffff !important; /* White text for paragraph readability */
+  transition: 0.3s;
+}
+
+.custom-card .card-title {
+  color: #ff0000 !important; /* Forces title to be red */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.custom-card:hover {
+  background-color: #111111 !important; /* Slightly lighter black on hover */
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+  transform: translateY(-5px); /* Interaction feedback */
+}
+
+/* --- Buttons --- */
+/* Solid Red Buttons for high contrast */
+.custom-btn {
+  background-color: #ff0000 !important; /* Solid red background */
+  color: #000000 !important; /* Black text for maximum contrast inside the button */
+  border: 1px solid #ff0000;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.custom-btn:hover {
+  background-color: #000000 !important; /* Flips to black on hover */
+  color: #ff0000 !important; /* Text flips to red */
+}
+
+/* --- Profile Picture Styling --- */
+.profile-pic {
+  width: 100%;
+  max-width: 300px;
+  border: 2px solid #ff0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  /* Makes your photo black-and-white to fit the vibe */
+  filter: grayscale(100%) contrast(120%);
+  transition: 0.3s ease-in-out;
+}
+
+.profile-pic:hover {
+  filter: grayscale(
+    0%
+  ); /* Returns to full color when someone hovers over it! */
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
 }
