@@ -1,38 +1,73 @@
-/* Applying Course Principles: Visual Hierarchy, Scale, Contrast */
+/* Applying Course Principles: Visual Hierarchy, Scale, Contrast, Gestalt */
+
+:root {
+  /* Using softer darks to prevent eye strain (Contrast Principle) */
+  --bg-color: #0d0d0d;
+  --surface-color: #1a1a1a;
+  --border-color: #331111;
+
+  /* Primary Text Colors */
+  --text-main: #e8e8e8;
+  --text-muted: #b3b3b3;
+
+  /* Accent Colors */
+  --accent-red: #ff4d4d; /* Softer, brighter red for better readability */
+  --accent-green: #00ff66;
+  --accent-yellow: #ffcc00;
+  --accent-blue: #00ccff;
+
+  /* Typography */
+  --font-terminal: "Fira Code", "Courier New", Courier, monospace;
+}
 
 /* --- Base & Typography --- */
 body {
-  background-color: #000000;
-  color: #e0e0e0; /* Light gray for readable paragraph text */
-  /* Using AmerType AM BT, falling back to courier/monospace for terminal feel */
-  font-family: "AmerType AM BT", "Courier New", Courier, monospace;
-  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-terminal);
+  line-height: 1.7;
 }
 
 h1,
 h2,
-h3 {
-  color: #ff0000; /* Keeping headings strictly red for Visual Hierarchy */
-  text-transform: uppercase;
-  font-weight: bold;
+h3,
+h4,
+h5 {
+  color: var(--text-main);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Using Red as an accent to guide the eye (Visual Hierarchy) */
+.text-accent {
+  color: var(--accent-red) !important;
+}
+.text-muted-light {
+  color: var(--text-muted);
+}
+.text-info {
+  color: var(--accent-blue) !important;
+}
+.text-success {
+  color: var(--accent-green) !important;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
 }
 h2 {
-  font-size: 2rem;
-  border-bottom: 1px dashed #ff0000;
+  font-size: 1.8rem;
+  border-bottom: 1px dashed var(--border-color);
   padding-bottom: 10px;
 }
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 /* --- Animations --- */
-/* Blinking Cursor Animation for terminal effect */
 .blink-cursor::after {
-  content: "|";
+  content: " \2588"; /* Block character looks more like a real terminal */
+  color: var(--text-main);
   animation: blink 1s step-end infinite;
 }
 
@@ -48,116 +83,169 @@ h3 {
 
 /* --- Navbar --- */
 .custom-navbar {
-  background-color: #111111;
-  border-bottom: 2px solid #ff0000;
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
 }
-
 .prompt-text {
-  color: #00ff00; /* Terminal green for the command line prompt */
-  font-weight: bold;
+  color: var(--text-main);
+  font-size: 1.1rem;
 }
 
-/* --- Sections & Layout --- */
+/* --- Terminal Block (Gestalt: Enclosure/Figure-Ground) --- */
 .terminal-block {
-  background-color: #0a0a0a;
-  border: 1px solid #330000;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
-.terminal-block p,
-.terminal-block li {
-  color: #cccccc; /* Soft gray for easy reading inside terminal blocks */
+/* Fake terminal window header */
+.terminal-header {
+  background-color: #2a2a2a;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-header .dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+.dot.red {
+  background-color: var(--accent-red);
+}
+.dot.yellow {
+  background-color: var(--accent-yellow);
+}
+.dot.green {
+  background-color: var(--accent-green);
+}
+
+.header-text {
+  color: #888;
+  font-size: 0.85rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.terminal-body {
+  padding: 30px;
 }
 
 /* --- Lists & Badges --- */
 .custom-list li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   padding-left: 15px;
-  border-left: 2px solid #ff0000;
+  border-left: 2px solid var(--accent-red);
+  color: var(--text-muted);
 }
-
 .custom-list strong {
-  color: #ff3333; /* Highlights the list titles in red */
+  color: var(--text-main);
 }
 
 .custom-badge {
-  background-color: transparent;
-  color: #ff0000;
-  border: 1px solid #ff0000;
-  font-size: 1rem;
+  background-color: rgba(255, 77, 77, 0.1);
+  color: var(--accent-red);
+  border: 1px solid var(--accent-red);
+  font-size: 0.9rem;
+  padding: 8px 12px;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-radius: 0; /* Square edges for raw tech look */
-  display: inline-block;
+  border-radius: 4px;
+  font-weight: normal;
 }
 
 /* --- Case Study Cards --- */
 .custom-card {
-  background-color: #000000 !important; /* Pure black background */
-  border: 1px solid #ff0000; /* Red border to keep the terminal shape */
-  border-radius: 0;
-  color: #ffffff !important; /* White text for paragraph readability */
-  transition: 0.3s;
+  background-color: var(--surface-color) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-main) !important;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.custom-card .card-body {
+  padding: 20px;
 }
 
 .custom-card .card-title {
-  color: #ff0000 !important; /* Forces title to be red */
-  font-weight: bold;
+  color: var(--accent-red) !important;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+.custom-card .card-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Hover feedback (Visibility of System Status) */
 .custom-card:hover {
-  background-color: #111111 !important; /* Slightly lighter black on hover */
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-  transform: translateY(-5px); /* Interaction feedback */
+  border-color: var(--accent-red);
+  box-shadow: 0 10px 25px rgba(255, 77, 77, 0.15);
+  transform: translateY(-4px);
 }
 
 /* --- Project Images --- */
+.card-img-wrapper {
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+}
+
 .project-img {
-  border-bottom: 1px solid #ff0000;
-  border-radius: 0;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
-  filter: grayscale(100%) contrast(120%) brightness(0.8);
-  transition: 0.4s ease-in-out;
+  filter: grayscale(100%) brightness(0.7) contrast(1.2);
+  transition: all 0.5s ease;
 }
 
 .custom-card:hover .project-img {
-  filter: grayscale(0%) contrast(100%) brightness(1);
+  filter: grayscale(0%) brightness(1) contrast(1);
+  transform: scale(1.05); /* Slight zoom for interaction feedback */
 }
 
 /* --- Buttons --- */
-/* Solid Red Buttons for high contrast */
 .custom-btn {
-  background-color: #ff0000 !important; /* Solid red background */
-  color: #000000 !important; /* Black text for maximum contrast inside the button */
-  border: 1px solid #ff0000;
-  border-radius: 0;
+  background-color: transparent !important;
+  color: var(--accent-red) !important;
+  border: 1px solid var(--accent-red);
+  border-radius: 4px;
+  padding: 10px 20px;
   text-transform: uppercase;
   font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
 .custom-btn:hover {
-  background-color: #000000 !important; /* Flips to black on hover */
-  color: #ff0000 !important; /* Text flips to red */
+  background-color: var(--accent-red) !important;
+  color: var(--bg-color) !important;
+  box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
 }
 
-/* --- Profile Picture Styling --- */
+/* --- Profile Picture --- */
 .profile-pic {
   width: 100%;
-  max-width: 300px;
-  border: 2px solid #ff0000;
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-  /* Makes your photo black-and-white to fit the vibe */
-  filter: grayscale(100%) contrast(120%);
-  transition: 0.3s ease-in-out;
+  max-width: px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  filter: grayscale(100%) contrast(1.2);
+  transition: all 0.4s ease;
 }
 
 .profile-pic:hover {
-  filter: grayscale(
-    0%
-  ); /* Returns to full color when someone hovers over it! */
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+  border-color: var(--accent-red);
+  filter: grayscale(0%);
+  box-shadow: 0 0 25px rgba(255, 77, 77, 0.3);
+}
+
+/* Footer Border */
+footer {
+  border-top: 1px solid var(--border-color);
 }
