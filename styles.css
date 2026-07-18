@@ -88,7 +88,9 @@ h3 {
   border: 1px solid #ff0000;
   font-size: 1rem;
   margin-right: 10px;
+  margin-bottom: 10px;
   border-radius: 0; /* Square edges for raw tech look */
+  display: inline-block;
 }
 
 /* --- Case Study Cards --- */
@@ -110,6 +112,20 @@ h3 {
   background-color: #111111 !important; /* Slightly lighter black on hover */
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
   transform: translateY(-5px); /* Interaction feedback */
+}
+
+/* --- Project Images --- */
+.project-img {
+  border-bottom: 1px solid #ff0000;
+  border-radius: 0;
+  height: 200px;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(120%) brightness(0.8);
+  transition: 0.4s ease-in-out;
+}
+
+.custom-card:hover .project-img {
+  filter: grayscale(0%) contrast(100%) brightness(1);
 }
 
 /* --- Buttons --- */
